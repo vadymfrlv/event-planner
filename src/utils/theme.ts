@@ -1,9 +1,12 @@
 export const theme = {
   colors: {
-    white: '#fff',
-    main: '#1900ff',
-    accent: '#e7fc00',
-    hoverBackground: '#e7fc008d',
+    white: '#FFFFFF',
+    text: '#3F3F3F',
+    accent: '#7B61FF',
+    hight: '#FF2B77',
+    medium: '#E2A300',
+    low: '#6BD475',
+    divider: '#ACA7C3',
   },
   fontSizes: [14, 15, 16, 18, 20, 25, 30],
   fontWeights: {
