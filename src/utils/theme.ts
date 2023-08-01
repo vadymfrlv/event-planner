@@ -3,10 +3,10 @@ export const theme = {
     white: '#FFFFFF',
     text: '#3F3F3F',
     accent: '#7B61FF',
+    divider: '#ACA7C3',
     hight: '#FF2B77',
     medium: '#E2A300',
     low: '#6BD475',
-    divider: '#ACA7C3',
   },
   fontSizes: [14, 15, 16, 18, 20, 25, 30],
   fontWeights: {

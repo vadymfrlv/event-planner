@@ -11,7 +11,6 @@ import {
   border,
   position,
   shadow,
-  fontWeight,
 } from 'styled-system';
 
 interface BoxProps extends CSSProperties {
@@ -27,6 +26,5 @@ export const Box: React.FC<BoxProps> = styled('div')(
   background,
   border,
   position,
-  shadow,
-  fontWeight
+  shadow
 );
