@@ -1,5 +1,7 @@
-import { ReactNode, CSSProperties } from 'react';
-import styled from 'styled-components';
+import { ReactNode, CSSProperties, ElementType } from 'react';
+import styled, { css } from 'styled-components';
+
+import { breakpoints } from 'constants/devices';
 
 import {
   color,
@@ -15,9 +17,10 @@ import {
 
 interface BoxProps extends CSSProperties {
   children?: ReactNode;
+  as?: ElementType;
 }
 
-export const Box: React.FC<BoxProps> = styled('div')(
+export const BaseBox: React.FC<BoxProps> = styled('div')(
   color,
   space,
   layout,
@@ -27,4 +30,25 @@ export const Box: React.FC<BoxProps> = styled('div')(
   border,
   position,
   shadow
+);
+
+export const ResponsiveBox = styled(BaseBox)(
+  () => css`
+    width: 100%;
+
+    margin: 0 auto;
+    padding: 0 24px;
+
+    @media screen and (min-width: ${breakpoints.MOB}) {
+      max-width: ${breakpoints.MOB};
+    }
+
+    @media screen and (min-width: ${breakpoints.TAB}) {
+      max-width: ${breakpoints.TAB};
+    }
+
+    @media screen and (min-width: ${breakpoints.DESK}) {
+      max-width: 100%;
+    }
+  `
 );
