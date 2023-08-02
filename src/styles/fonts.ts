@@ -47,4 +47,12 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 800;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'Alata';
+    src: local('Alata-Regular'),
+        url("src/assets/fonts/Alata-Regular.ttf") format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
 `;
