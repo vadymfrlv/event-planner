@@ -7,8 +7,13 @@ export const theme = {
     hight: '#FF2B77',
     medium: '#E2A300',
     low: '#6BD475',
+    background: '#FEFCFF',
   },
-  fontSizes: [14, 15, 16, 18, 20, 25, 30],
+  fonts: {
+    main: 'Poppins',
+    logo: 'Alata',
+  },
+  fontSizes: [24],
   fontWeights: {
     regular: 400,
     semiMedium: '500',
@@ -26,7 +31,7 @@ export const theme = {
   },
   borders: {
     none: 'none',
-    headerFooter: '6px solid #e7fc00',
+    header: '1px solid #7B61FF',
     btn: '3px solid #e7fc00',
     decorative: '2px dashed #fff',
   },
