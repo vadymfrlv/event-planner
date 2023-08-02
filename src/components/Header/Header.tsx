@@ -1,7 +1,13 @@
-import React from 'react';
+import { ResponsiveBox } from 'components/Box/Box.jsx';
 
-import { StyledHeader } from './Header.styled';
+import { StyledHeader, Logo } from './Header.styled';
 
 export const Header = () => {
-  return <StyledHeader>Header</StyledHeader>;
+  return (
+    <StyledHeader>
+      <ResponsiveBox>
+        <Logo>Event Planner</Logo>
+      </ResponsiveBox>
+    </StyledHeader>
+  );
 };
