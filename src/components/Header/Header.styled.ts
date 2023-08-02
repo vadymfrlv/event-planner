@@ -1,18 +1,19 @@
 import styled from 'styled-components';
 
 export const StyledHeader = styled.header`
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 60px;
-
+  padding: 24px 0;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  background-color: ${p => p.theme.colors.main};
-  border-bottom: ${p => p.theme.borders.headerFooter};
+  background-color: ${p => p.theme.colors.background};
+  border-bottom: ${p => p.theme.borders.header};
+`;
 
-  z-index: ${p => p.theme.zIndices[1]};
+export const Logo = styled.span`
+  font-family: ${p => p.theme.fonts.logo};
+  font-size: ${p => p.theme.fontSizes[0]}px;
+
+  color: ${p => p.theme.colors.accent};
 `;
