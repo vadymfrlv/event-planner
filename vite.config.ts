@@ -10,6 +10,7 @@ export default defineConfig({
       services: '/src/services',
       utils: '/src/utils',
       styles: '/src/styles',
+      constants: '/src/constants',
     },
   },
 });
