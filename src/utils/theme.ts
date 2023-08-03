@@ -1,3 +1,5 @@
+import { breakpoints } from 'constants/devices';
+
 export const theme = {
   colors: {
     white: '#FFFFFF',
@@ -15,11 +17,12 @@ export const theme = {
   },
   fontSizes: [24],
   fontWeights: {
+    light: 300,
     regular: 400,
-    semiMedium: '500',
-    medium: 600,
+    medium: 500,
+    semiBold: 600,
     bold: 700,
-    black: 900,
+    extraBold: 800,
   },
   letterSpacings: {
     small: '2px',
@@ -32,19 +35,24 @@ export const theme = {
   borders: {
     none: 'none',
     header: '1px solid #7B61FF',
-    btn: '3px solid #e7fc00',
-    decorative: '2px dashed #fff',
+    listDivider: '1px solid #ACA7C3',
+    listDividerHover: '1px solid #7B61FF',
   },
   radii: {
     none: '0',
-    btn: '4px',
+    eight: '8px',
     poster: '5px',
   },
   shadows: {
-    card: '0px 12px 29px -1px rgba(247, 255, 0, 0.77)',
+    elements: '0px 1px 8px 0px rgba(185, 156, 195, 0.28)',
     navLink:
       '0 0 3px #91ff00, 0 0 8px #91ff00, 0 0 13px #91ff00, 0 0 17px #91ff00, 0 0 22px #91ff00, 0 0 27px #91ff00, 0 0 32px #91ff00',
     btn: '0 0 5px #91ff00, 0 0 5px #91ff00, 0 0 9px #91ff00, 0 0 13px #91ff00, 0 0 18px #91ff00, 0 0 23px #91ff00, 0 0 28px #91ff00',
   },
-  zIndices: [-1, 1],
+  zIndices: [-1, 1, 2, 3, 4, 5],
+  screens: {
+    mob: breakpoints.MOB,
+    tab: breakpoints.TAB,
+    desk: breakpoints.DESK,
+  },
 };
