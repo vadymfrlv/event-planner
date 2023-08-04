@@ -9,6 +9,7 @@ export const Header = () => {
       <ResponsiveBox display="flex" alignItems="center" justifyContent="space-between">
         <LogoLinkStyled to={'/'}>Event Planner</LogoLinkStyled>
         <LanguageSelector />
+        {/* //TODO <SearchBox /> */}
       </ResponsiveBox>
     </HeaderStyled>
   );
