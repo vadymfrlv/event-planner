@@ -1,12 +1,22 @@
-import { ThreeDots } from 'react-loader-spinner';
 import { BaseBox } from 'components/Box/Box';
+import { LoaderWrapper, LoaderBlock } from './Loader.styled';
 
-const Loader = () => {
+export const Loader = () => {
+  const blocks = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const delay = 0.065;
+
   return (
-    <BaseBox>
-      <ThreeDots color="#ff751d" height={150} width={150} ariaLabel="three-dots-loading" />
+    <BaseBox display="flex" justifyContent="center">
+      <LoaderWrapper>
+        {blocks.map(index => (
+          <LoaderBlock
+            key={index}
+            style={{
+              animationDelay: `${index === 9 ? 0 : index * delay}s`,
+            }}
+          />
+        ))}
+      </LoaderWrapper>
     </BaseBox>
   );
 };
-
-export default Loader;
