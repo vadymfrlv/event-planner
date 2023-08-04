@@ -8,9 +8,9 @@ import i18n from './i18n.ts';
 
 import { App } from './App.tsx';
 
-import { theme } from 'utils/theme';
-import { GlobalStyle } from 'styles/fonts.ts';
 import 'styles/global.css';
+import { theme } from 'utils/theme';
+import { GlobalFontStyle } from 'styles/fonts.ts';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -18,7 +18,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <I18nextProvider i18n={i18n}>
         <ThemeProvider theme={theme}>
           <StyleSheetManager shouldForwardProp={isPropValid}>
-            <GlobalStyle />
+            <GlobalFontStyle />
             <App />
           </StyleSheetManager>
         </ThemeProvider>

@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-export const GlobalStyle = createGlobalStyle`
+export const GlobalFontStyle = createGlobalStyle`
 @font-face {
     font-family: 'Poppins';
     src: local('Poppins-Light'),
