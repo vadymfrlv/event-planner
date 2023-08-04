@@ -49,7 +49,7 @@ export const theme = {
       '0 0 3px #91ff00, 0 0 8px #91ff00, 0 0 13px #91ff00, 0 0 17px #91ff00, 0 0 22px #91ff00, 0 0 27px #91ff00, 0 0 32px #91ff00',
     btn: '0 0 5px #91ff00, 0 0 5px #91ff00, 0 0 9px #91ff00, 0 0 13px #91ff00, 0 0 18px #91ff00, 0 0 23px #91ff00, 0 0 28px #91ff00',
   },
-  zIndices: [-1, 1, 2, 3, 4, 5],
+  zIndices: [-1, 0, 1, 2, 3, 4, 5],
   screens: {
     mob: breakpoints.MOB,
     tab: breakpoints.TAB,
