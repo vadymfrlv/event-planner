@@ -18,6 +18,7 @@ export const MainStyled = styled.main`
   @media (min-width: ${p => p.theme.screens.desk}) {
     padding-top: 60px;
     padding-bottom: 77px;
+    background-size: 130% auto;
     background-position: top -3px left 97%;
   }
 `;
