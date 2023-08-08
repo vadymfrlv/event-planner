@@ -4,8 +4,8 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import LocalStorageBackend from 'i18next-localstorage-backend';
 
 // Import translations for different languages
-import translationsUa from '../public/locales/ua.json';
-import translationsEn from '../public/locales/en.json';
+import translationsUa from './locales/ua.json';
+import translationsEn from './locales/en.json';
 
 const storedLanguage = localStorage.getItem('i18nextLng');
 
