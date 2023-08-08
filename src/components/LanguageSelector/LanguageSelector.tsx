@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { languages } from 'constants/languages';
@@ -17,12 +17,9 @@ export const LanguageSelector = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language.toUpperCase());
 
-  useEffect(() => {
-    setCurrentLanguage(i18n.language.toUpperCase());
-  }, [i18n.language]);
-
   const handleLanguageChange = (language: string) => {
     i18n.changeLanguage(language);
+    setCurrentLanguage(language.toUpperCase());
     setIsDropdownOpen(false);
   };
 

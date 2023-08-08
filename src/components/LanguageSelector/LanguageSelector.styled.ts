@@ -58,9 +58,7 @@ export const LanguageOptions = styled.ul<ILanguageOptionsProps>`
   border-radius: ${p => p.theme.radii.eight};
   box-shadow: ${p => p.theme.shadows.elements};
   opacity: ${p => (p.$languageOptions ? 1 : 0)};
-  z-index: ${p => p.theme.zIndices[1]};
-  transition: opacity 300ms ease-in-out, top 200ms ease-in-out;
-  transform: translateY(${p => (p.$languageOptions ? '0' : '1px')});
+  transition: top 250ms ease-in-out, opacity 300ms ease-in-out;
 `;
 
 export const LanguageOption = styled.li`
