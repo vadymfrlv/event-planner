@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { languages } from 'constants/languages';
@@ -17,6 +17,29 @@ export const LanguageSelector = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language.toUpperCase());
 
+  console.log(isDropdownOpen);
+
+  useEffect(() => {
+    const closeDropdown = () => {
+      setIsDropdownOpen(false);
+    };
+
+    if (isDropdownOpen) {
+      document.addEventListener('click', closeDropdown);
+    } else {
+      document.removeEventListener('click', closeDropdown);
+    }
+
+    return () => {
+      document.removeEventListener('click', closeDropdown);
+    };
+  }, [isDropdownOpen]);
+
+  const toggleDropdown = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
   const handleLanguageChange = (language: string) => {
     i18n.changeLanguage(language);
     setCurrentLanguage(language.toUpperCase());
@@ -25,10 +48,7 @@ export const LanguageSelector = () => {
 
   return (
     <LanguageSelectorContainer>
-      <LanguageSelectorButton
-        $languageOptions={isDropdownOpen}
-        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-      >
+      <LanguageSelectorButton $languageOptions={isDropdownOpen} onClick={toggleDropdown}>
         {currentLanguage}
         {isDropdownOpen ? <ExpandLessIconStyled /> : <ExpandMoreIconStyled />}
       </LanguageSelectorButton>
