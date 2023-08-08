@@ -17,8 +17,6 @@ export const LanguageSelector = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language.toUpperCase());
 
-  console.log(isDropdownOpen);
-
   useEffect(() => {
     const closeDropdown = () => {
       setIsDropdownOpen(false);
