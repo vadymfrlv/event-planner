@@ -15,12 +15,14 @@ const expandIconBaseStyles = css`
 export const LanguageSelectorContainer = styled.div`
   position: relative;
   display: inline-block;
+  margin-left: 24px;
 `;
 
 export const LanguageSelectorButton = styled.button<ILanguageOptionsProps>`
   display: flex;
   align-items: center;
   width: 69px;
+  height: 48px;
   padding: 12px 4px 12px 12px;
   font-family: ${p => p.theme.fonts.main};
   font-weight: ${p => p.theme.fontWeights.medium};
@@ -33,10 +35,6 @@ export const LanguageSelectorButton = styled.button<ILanguageOptionsProps>`
   border-radius: ${p => p.theme.radii.eight};
   box-shadow: ${p => p.theme.shadows.elements};
   cursor: pointer;
-
-  &:hover,
-  &:focus {
-  }
 `;
 
 export const ExpandMoreIconStyled = styled(MdExpandMore)`
