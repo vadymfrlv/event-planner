@@ -3,6 +3,17 @@ import styled, { css } from 'styled-components';
 import { CiSearch } from 'react-icons/ci';
 import { IoIosClose } from 'react-icons/io';
 
+export const SearchBoxWrapper = styled.div`
+  position: relative;
+  margin-top: 24px;
+  order: 2;
+
+  @media (min-width: ${p => p.theme.screens.tab}) {
+    margin-top: 0;
+    order: 1;
+  }
+`;
+
 export const InputStyled = styled.input`
   width: 272px;
   height: 48px;
@@ -57,4 +68,5 @@ export const CloseIcon = styled(IoIosClose)`
   ${expandIconBaseStyles};
 
   right: 12px;
+  cursor: pointer;
 `;

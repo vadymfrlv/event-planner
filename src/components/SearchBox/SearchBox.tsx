@@ -1,14 +1,19 @@
-import React from 'react';
-
-import { CloseIcon, InputStyled, SearchIcon } from './SearchBox.styled';
-import { BaseBox } from 'components/Box/Box';
+import { useState } from 'react';
+import { SearchBoxWrapper, InputStyled, SearchIcon, CloseIcon } from './SearchBox.styled';
 
 export const SearchBox = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+
   return (
-    <BaseBox position="relative">
-      <InputStyled type="text" placeholder="Search by keywords" />
+    <SearchBoxWrapper>
+      <InputStyled
+        type="text"
+        placeholder="Search by keywords"
+        value={searchQuery}
+        onChange={e => setSearchQuery(e.target.value)}
+      />
       <SearchIcon />
-      <CloseIcon />
-    </BaseBox>
+      {searchQuery && <CloseIcon type="button" onClick={() => setSearchQuery('')} />}
+    </SearchBoxWrapper>
   );
 };
