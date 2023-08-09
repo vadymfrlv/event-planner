@@ -15,7 +15,12 @@ const expandIconBaseStyles = css`
 export const LanguageSelectorContainer = styled.div`
   position: relative;
   display: inline-block;
-  margin-left: 24px;
+  order: 1;
+
+  @media (min-width: ${p => p.theme.screens.tab}) {
+    margin-left: 24px;
+    order: 2;
+  }
 `;
 
 export const LanguageSelectorButton = styled.button<ILanguageOptionsProps>`
@@ -47,6 +52,7 @@ export const ExpandLessIconStyled = styled(MdExpandLess)`
 
 export const LanguageOptions = styled.ul<ILanguageOptionsProps>`
   position: absolute;
+  display: ${p => (p.$languageOptions ? 'block' : 'none')};
   top: ${p => (p.$languageOptions ? '63px' : '48px')};
   left: 0;
   padding: 16px 12px;
