@@ -1,7 +1,8 @@
 import React from 'react';
+import { PageTitle } from 'components/PageTitle/PageTitle';
 
 const HomePage = () => {
-  return <div>HomePage</div>;
+  return <PageTitle title="My events" />;
 };
 
 export default HomePage;
