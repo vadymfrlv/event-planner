@@ -11,6 +11,7 @@ export const theme = {
     medium: '#E2A300',
     low: '#6BD475',
     background: '#FEFCFF',
+    btnHover: '#6243FF',
   },
   fonts: {
     main: 'Poppins',
