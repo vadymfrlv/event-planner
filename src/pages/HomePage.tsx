@@ -7,7 +7,7 @@ const HomePage = () => {
     <>
       <BaseBox display="flex" justifyContent="space-between" alignItems="center">
         <PageTitle title="My events" />
-        <ActionBtn description="Add new event" isLink to="/" />
+        <ActionBtn description="Add new event" isLink to="createEvent" />
       </BaseBox>
       {/* <ActionBtn description="Submit" isLink={false} type="submit" /> */}
     </>
