@@ -9,7 +9,6 @@ const HomePage = () => {
         <PageTitle title="My events" />
         <ActionBtn description="Add new event" isLink to="createEvent" />
       </BaseBox>
-      {/* <ActionBtn description="Submit" isLink={false} type="submit" /> */}
     </>
   );
 };
