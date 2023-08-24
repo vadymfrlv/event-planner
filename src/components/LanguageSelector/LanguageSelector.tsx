@@ -46,7 +46,7 @@ export const LanguageSelector = () => {
 
   return (
     <LanguageSelectorContainer>
-      <LanguageSelectorButton $languageOptions={isDropdownOpen} onClick={toggleDropdown}>
+      <LanguageSelectorButton onClick={toggleDropdown}>
         {currentLanguage}
         {isDropdownOpen ? <ExpandLessIconStyled /> : <ExpandMoreIconStyled />}
       </LanguageSelectorButton>

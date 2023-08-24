@@ -23,7 +23,7 @@ export const LanguageSelectorContainer = styled.div`
   }
 `;
 
-export const LanguageSelectorButton = styled.button<ILanguageOptionsProps>`
+export const LanguageSelectorButton = styled.button`
   display: flex;
   align-items: center;
   width: 69px;
@@ -52,7 +52,6 @@ export const ExpandLessIconStyled = styled(MdExpandLess)`
 
 export const LanguageOptions = styled.ul<ILanguageOptionsProps>`
   position: absolute;
-  display: ${p => (p.$languageOptions ? 'block' : 'none')};
   top: ${p => (p.$languageOptions ? '63px' : '48px')};
   left: 0;
   padding: 16px 12px;
@@ -63,6 +62,7 @@ export const LanguageOptions = styled.ul<ILanguageOptionsProps>`
   box-shadow: ${p => p.theme.shadows.elements};
   opacity: ${p => (p.$languageOptions ? 1 : 0)};
   transition: top 250ms ease-in-out, opacity 300ms ease-in-out;
+  z-index: ${p => p.theme.zIndices[3]};
 `;
 
 export const LanguageOption = styled.li`
