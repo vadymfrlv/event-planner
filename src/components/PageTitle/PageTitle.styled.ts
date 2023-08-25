@@ -5,6 +5,7 @@ export const PageTitleStyled = styled.h1`
 
   @media (min-width: ${p => p.theme.screens.tab}) {
     display: block;
+    margin-right: auto;
 
     font-family: Poppins;
     font-weight: 600;
