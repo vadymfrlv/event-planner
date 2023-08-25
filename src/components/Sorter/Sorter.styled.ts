@@ -15,11 +15,9 @@ const expandIconBaseStyles = css`
 export const LanguageSelectorContainer = styled.div`
   position: relative;
   display: inline-block;
-  order: 1;
 
   @media (min-width: ${p => p.theme.screens.tab}) {
-    margin-left: 24px;
-    order: 2;
+    margin-right: 24px;
   }
 `;
 
