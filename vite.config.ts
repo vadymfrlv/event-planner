@@ -11,6 +11,7 @@ export default defineConfig({
       utils: '/src/utils',
       styles: '/src/styles',
       constants: '/src/constants',
+      hooks: '/src/hooks',
     },
   },
 });

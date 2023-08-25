@@ -14,7 +14,8 @@
       "services/*": ["services/*"],
       "utils/*": ["utils/*"],
       "styles/*": ["styles/*"],
-      "constants/*": ["constants/*"]
+      "constants/*": ["constants/*"],
+      "hooks/*": ["hooks/*"]
     },
 
     /* Bundler mode */
