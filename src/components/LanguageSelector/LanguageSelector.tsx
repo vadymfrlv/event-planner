@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { languages } from 'constants/languages';
+import { ClickOutsideWrapper } from 'components/ClickOutsideWrapper/ClickOutsideWrapper';
 
 import {
   LanguageSelectorContainer,
@@ -17,22 +18,6 @@ export const LanguageSelector = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language.toUpperCase());
 
-  useEffect(() => {
-    const closeDropdown = () => {
-      setIsDropdownOpen(false);
-    };
-
-    if (isDropdownOpen) {
-      document.addEventListener('click', closeDropdown);
-    } else {
-      document.removeEventListener('click', closeDropdown);
-    }
-
-    return () => {
-      document.removeEventListener('click', closeDropdown);
-    };
-  }, [isDropdownOpen]);
-
   const toggleDropdown = (event: React.MouseEvent) => {
     event.stopPropagation();
     setIsDropdownOpen(!isDropdownOpen);
@@ -44,20 +29,26 @@ export const LanguageSelector = () => {
     setIsDropdownOpen(false);
   };
 
-  return (
-    <LanguageSelectorContainer>
-      <LanguageSelectorButton onClick={toggleDropdown}>
-        {currentLanguage}
-        {isDropdownOpen ? <ExpandLessIconStyled /> : <ExpandMoreIconStyled />}
-      </LanguageSelectorButton>
+  const handleOutsideClick = () => {
+    setIsDropdownOpen(false);
+  };
 
-      <LanguageOptions $languageOptions={isDropdownOpen}>
-        {languages.map(({ value, label }) => (
-          <LanguageOption key={value} onClick={() => handleLanguageChange(value)}>
-            {label}
-          </LanguageOption>
-        ))}
-      </LanguageOptions>
-    </LanguageSelectorContainer>
+  return (
+    <ClickOutsideWrapper onClickOutside={handleOutsideClick}>
+      <LanguageSelectorContainer>
+        <LanguageSelectorButton onClick={toggleDropdown}>
+          {currentLanguage}
+          {isDropdownOpen ? <ExpandLessIconStyled /> : <ExpandMoreIconStyled />}
+        </LanguageSelectorButton>
+
+        <LanguageOptions $languageOptions={isDropdownOpen}>
+          {languages.map(({ value, label }) => (
+            <LanguageOption key={value} onClick={() => handleLanguageChange(value)}>
+              {label}
+            </LanguageOption>
+          ))}
+        </LanguageOptions>
+      </LanguageSelectorContainer>
+    </ClickOutsideWrapper>
   );
 };
