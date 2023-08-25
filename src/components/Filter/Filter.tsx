@@ -1,60 +1,53 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import { filterOptions } from 'constants/filterOptions';
+import { ClickOutsideWrapper } from 'components/ClickOutsideWrapper/ClickOutsideWrapper';
 
 import {
-  LanguageSelectorContainer,
-  LanguageSelectorButton,
-  LanguageOptions,
-  LanguageOption,
-  ExpandLessIconStyled,
-  ExpandMoreIconStyled,
+  FilterByContainer,
+  FilterSelectorButton,
+  FilterByOptions,
+  FilterByOption,
+  FilterByIconStyled,
 } from './Filter.styled';
 
 export const FilterBy = () => {
   const [currentFilterBy, setCurrentFilterBy] = useState('');
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isFilterByDropdownOpen, setIsFilterByDropdownOpen] = useState(false);
 
-  useEffect(() => {
-    const closeDropdown = () => {
-      setIsDropdownOpen(false);
-    };
-
-    if (isDropdownOpen) {
-      document.addEventListener('click', closeDropdown);
-    } else {
-      document.removeEventListener('click', closeDropdown);
-    }
-
-    return () => {
-      document.removeEventListener('click', closeDropdown);
-    };
-  }, [isDropdownOpen]);
-
-  const toggleDropdown = (event: React.MouseEvent) => {
+  const toggleFilterByDropdown = (event: React.MouseEvent) => {
     event.stopPropagation();
-    setIsDropdownOpen(!isDropdownOpen);
+    setIsFilterByDropdownOpen(!isFilterByDropdownOpen);
   };
 
   const handleFilterByChange = (filterByOption: string) => {
     setCurrentFilterBy(filterByOption);
-    setIsDropdownOpen(false);
+    setIsFilterByDropdownOpen(false);
+  };
+
+  const handleOutsideClick = () => {
+    setIsFilterByDropdownOpen(false);
   };
 
   return (
-    <LanguageSelectorContainer>
-      <LanguageSelectorButton $languageOptions={isDropdownOpen} onClick={toggleDropdown}>
-        {currentFilterBy}
-        {isDropdownOpen ? <ExpandLessIconStyled /> : <ExpandMoreIconStyled />}
-      </LanguageSelectorButton>
+    <ClickOutsideWrapper onClickOutside={handleOutsideClick}>
+      <FilterByContainer>
+        <FilterSelectorButton
+          $languageOptions={isFilterByDropdownOpen}
+          onClick={toggleFilterByDropdown}
+        >
+          {currentFilterBy || 'Category'}
+          <FilterByIconStyled />
+        </FilterSelectorButton>
 
-      <LanguageOptions $languageOptions={isDropdownOpen}>
-        {filterOptions.map(({ value, label }) => (
-          <LanguageOption key={value} onClick={() => handleFilterByChange(value)}>
-            {label}
-          </LanguageOption>
-        ))}
-      </LanguageOptions>
-    </LanguageSelectorContainer>
+        <FilterByOptions $languageOptions={isFilterByDropdownOpen}>
+          {filterOptions.map(({ value, label }) => (
+            <FilterByOption key={value} onClick={() => handleFilterByChange(label)}>
+              {label}
+            </FilterByOption>
+          ))}
+        </FilterByOptions>
+      </FilterByContainer>
+    </ClickOutsideWrapper>
   );
 };
