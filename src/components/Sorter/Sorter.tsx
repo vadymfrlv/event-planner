@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import { sortOptions } from 'constants/sortOptions';
+import { ClickOutsideWrapper } from 'components/ClickOutsideWrapper/ClickOutsideWrapper';
 
 import {
   LanguageSelectorContainer,
@@ -15,22 +16,6 @@ export const SortBy = () => {
   const [currentSortBy, setCurrentSortBy] = useState('');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  useEffect(() => {
-    const closeDropdown = () => {
-      setIsDropdownOpen(false);
-    };
-
-    if (isDropdownOpen) {
-      document.addEventListener('click', closeDropdown);
-    } else {
-      document.removeEventListener('click', closeDropdown);
-    }
-
-    return () => {
-      document.removeEventListener('click', closeDropdown);
-    };
-  }, [isDropdownOpen]);
-
   const toggleDropdown = (event: React.MouseEvent) => {
     event.stopPropagation();
     setIsDropdownOpen(!isDropdownOpen);
@@ -41,20 +26,26 @@ export const SortBy = () => {
     setIsDropdownOpen(false);
   };
 
-  return (
-    <LanguageSelectorContainer>
-      <LanguageSelectorButton $languageOptions={isDropdownOpen} onClick={toggleDropdown}>
-        {currentSortBy}
-        {isDropdownOpen ? <ExpandLessIconStyled /> : <ExpandMoreIconStyled />}
-      </LanguageSelectorButton>
+  const handleOutsideClick = () => {
+    setIsDropdownOpen(false);
+  };
 
-      <LanguageOptions $languageOptions={isDropdownOpen}>
-        {sortOptions.map(({ value, label }, idx) => (
-          <LanguageOption key={idx} onClick={() => handleSortByChange(value)}>
-            {label}
-          </LanguageOption>
-        ))}
-      </LanguageOptions>
-    </LanguageSelectorContainer>
+  return (
+    <ClickOutsideWrapper onClickOutside={handleOutsideClick}>
+      <LanguageSelectorContainer>
+        <LanguageSelectorButton $languageOptions={isDropdownOpen} onClick={toggleDropdown}>
+          {currentSortBy}
+          {isDropdownOpen ? <ExpandLessIconStyled /> : <ExpandMoreIconStyled />}
+        </LanguageSelectorButton>
+
+        <LanguageOptions $languageOptions={isDropdownOpen}>
+          {sortOptions.map(({ value, label }, idx) => (
+            <LanguageOption key={idx} onClick={() => handleSortByChange(value)}>
+              {label}
+            </LanguageOption>
+          ))}
+        </LanguageOptions>
+      </LanguageSelectorContainer>
+    </ClickOutsideWrapper>
   );
 };
