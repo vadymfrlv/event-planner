@@ -10,7 +10,7 @@ export const SearchBoxWrapper = styled.div`
 
   @media (min-width: ${p => p.theme.screens.tab}) {
     margin-top: 0;
-    order: 1;
+    order: unset;
   }
 `;
 
