@@ -6,14 +6,12 @@ import { SortBy } from 'components/Sorter/Sorter';
 
 const HomePage = () => {
   return (
-    <>
-      <BaseBox display="flex" justifyContent="space-between" alignItems="center">
-        <PageTitle title="My events" />
-        <ActionBtn description="Add new event" isLink to="createEvent" />
-        <FilterBy />
-        <SortBy />
-      </BaseBox>
-    </>
+    <BaseBox display="flex" alignItems="center">
+      <PageTitle title="My events" />
+      <FilterBy />
+      <SortBy />
+      <ActionBtn description="Add new event" isLink to="createEvent" />
+    </BaseBox>
   );
 };
 
