@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { MdExpandMore, MdExpandLess } from 'react-icons/md';
 
-interface ILanguageOptionsProps {
+interface LanguageOptionsProps {
   $languageOptions: boolean;
 }
 
@@ -48,9 +48,9 @@ export const ExpandLessIconStyled = styled(MdExpandLess)`
   ${expandIconBaseStyles}
 `;
 
-export const LanguageOptions = styled.ul<ILanguageOptionsProps>`
+export const LanguageOptions = styled.ul<LanguageOptionsProps>`
   position: absolute;
-  display: ${p => (p.$languageOptions ? 'block' : 'none')};
+  visibility: ${p => (p.$languageOptions ? 'visible' : 'hidden')};
   top: ${p => (p.$languageOptions ? '63px' : '48px')};
   left: 0;
   padding: 16px 12px;
@@ -61,7 +61,7 @@ export const LanguageOptions = styled.ul<ILanguageOptionsProps>`
   box-shadow: ${p => p.theme.shadows.elements};
   opacity: ${p => (p.$languageOptions ? 1 : 0)};
   transition: top 250ms ease-in-out, opacity 300ms ease-in-out;
-  z-index: ${p => p.theme.zIndices[3]};
+  z-index: ${p => p.theme.zIndices[6]};
 `;
 
 export const LanguageOption = styled.li`
