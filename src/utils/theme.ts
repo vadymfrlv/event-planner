@@ -38,6 +38,7 @@ export const theme = {
     none: 'none',
     header: '1px solid #7B61FF',
     listDivider: '1px solid #ACA7C3',
+    listDividerActive: '1px solid #7B61FF',
     listDividerHover: '1px solid #7B61FF',
   },
   radii: {
