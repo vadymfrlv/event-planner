@@ -12,7 +12,7 @@ import {
   ExpandMoreIconStyled,
 } from './Sorter.styled';
 
-export const SortBy = () => {
+export const Sorter = () => {
   const [currentSortBy, setCurrentSortBy] = useState('');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
