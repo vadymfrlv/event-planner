@@ -14,45 +14,45 @@ import {
 
 export const Filter = () => {
   const [currentFilter, setCurrentFilter] = useState('');
-  const [isFilterDropdownOpen, setIsFilterDropdownOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleFilterChange = (filterOption: string) => {
     const transformedFilterOption = filterOption.charAt(0).toUpperCase() + filterOption.slice(1);
 
     if (currentFilter === transformedFilterOption) {
       setCurrentFilter('');
-      setIsFilterDropdownOpen(false);
+      setIsDropdownOpen(false);
       return;
     }
 
     setCurrentFilter(transformedFilterOption);
-    setIsFilterDropdownOpen(false);
+    setIsDropdownOpen(false);
   };
 
   const toggleFilterDropdown = (event: React.MouseEvent) => {
     event.stopPropagation();
-    setIsFilterDropdownOpen(!isFilterDropdownOpen);
+    setIsDropdownOpen(!isDropdownOpen);
   };
 
   const handleOutsideClick = () => {
-    setIsFilterDropdownOpen(false);
+    setIsDropdownOpen(false);
   };
 
   return (
     <ClickOutsideWrapper onClickOutside={handleOutsideClick}>
       <FilterContainer>
         <FilterSelectorButton
-          $filterOptions={isFilterDropdownOpen}
+          $filterOptions={isDropdownOpen}
           $filterSelected={!!currentFilter}
           onClick={toggleFilterDropdown}
         >
-          <FilterDescription $filterOptions={isFilterDropdownOpen}>
+          <FilterDescription $filterOptions={isDropdownOpen}>
             {currentFilter || 'Category'}
           </FilterDescription>
           <FilterIconStyled />
         </FilterSelectorButton>
 
-        <FilterOptions $filterOptions={isFilterDropdownOpen}>
+        <FilterOptions $filterOptions={isDropdownOpen}>
           {filterOptions.map(({ value, label }) => (
             <FilterOption
               key={value}
