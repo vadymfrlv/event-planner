@@ -1,8 +1,10 @@
 import styled, { css } from 'styled-components';
 import { MdExpandMore, MdExpandLess } from 'react-icons/md';
 
-interface ILanguageOptionsProps {
-  $languageOptions: boolean;
+interface SorterOptionsProps {
+  $sorterOptions?: boolean;
+  $sorterSelected?: boolean;
+  $active?: boolean;
 }
 
 const expandIconBaseStyles = css`
@@ -12,7 +14,7 @@ const expandIconBaseStyles = css`
   color: ${p => p.theme.colors.text};
 `;
 
-export const LanguageSelectorContainer = styled.div`
+export const SorterContainer = styled.div`
   position: relative;
   display: inline-block;
 
@@ -21,7 +23,7 @@ export const LanguageSelectorContainer = styled.div`
   }
 `;
 
-export const LanguageSelectorButton = styled.button<ILanguageOptionsProps>`
+export const SorterButton = styled.button<SorterOptionsProps>`
   display: flex;
   align-items: center;
   width: 69px;
@@ -48,10 +50,10 @@ export const ExpandLessIconStyled = styled(MdExpandLess)`
   ${expandIconBaseStyles}
 `;
 
-export const LanguageOptions = styled.ul<ILanguageOptionsProps>`
+export const SorterOptions = styled.ul<SorterOptionsProps>`
   position: absolute;
-  display: ${p => (p.$languageOptions ? 'block' : 'none')};
-  top: ${p => (p.$languageOptions ? '63px' : '48px')};
+  display: ${p => (p.$sorterOptions ? 'block' : 'none')};
+  top: ${p => (p.$sorterOptions ? '63px' : '48px')};
   left: 0;
   padding: 16px 12px;
   margin: 0 auto;
@@ -59,11 +61,11 @@ export const LanguageOptions = styled.ul<ILanguageOptionsProps>`
   background-color: ${p => p.theme.colors.white};
   border-radius: ${p => p.theme.radii.eight};
   box-shadow: ${p => p.theme.shadows.elements};
-  opacity: ${p => (p.$languageOptions ? 1 : 0)};
+  opacity: ${p => (p.$sorterOptions ? 1 : 0)};
   transition: top 250ms ease-in-out, opacity 300ms ease-in-out;
 `;
 
-export const LanguageOption = styled.li`
+export const SorterOption = styled.li`
   font-size: 16px;
   line-height: 20px;
   padding-bottom: 4px;

@@ -4,16 +4,16 @@ import { sortOptions } from 'constants/sortOptions';
 import { ClickOutsideWrapper } from 'components/ClickOutsideWrapper/ClickOutsideWrapper';
 
 import {
-  LanguageSelectorContainer,
-  LanguageSelectorButton,
-  LanguageOptions,
-  LanguageOption,
+  SorterContainer,
+  SorterButton,
+  SorterOptions,
+  SorterOption,
   ExpandLessIconStyled,
   ExpandMoreIconStyled,
 } from './Sorter.styled';
 
 export const Sorter = () => {
-  const [currentSortBy, setCurrentSortBy] = useState('');
+  const [currentSort, setCurrentSort] = useState('');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleDropdown = (event: React.MouseEvent) => {
@@ -21,8 +21,8 @@ export const Sorter = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  const handleSortByChange = (sortByOption: string) => {
-    setCurrentSortBy(sortByOption);
+  const handleSortChange = (sortByOption: string) => {
+    setCurrentSort(sortByOption);
     setIsDropdownOpen(false);
   };
 
@@ -32,20 +32,20 @@ export const Sorter = () => {
 
   return (
     <ClickOutsideWrapper onClickOutside={handleOutsideClick}>
-      <LanguageSelectorContainer>
-        <LanguageSelectorButton $languageOptions={isDropdownOpen} onClick={toggleDropdown}>
-          {currentSortBy}
+      <SorterContainer>
+        <SorterButton $sorterOptions={isDropdownOpen} onClick={toggleDropdown}>
+          {currentSort}
           {isDropdownOpen ? <ExpandLessIconStyled /> : <ExpandMoreIconStyled />}
-        </LanguageSelectorButton>
+        </SorterButton>
 
-        <LanguageOptions $languageOptions={isDropdownOpen}>
+        <SorterOptions $sorterOptions={isDropdownOpen}>
           {sortOptions.map(({ value, label }, idx) => (
-            <LanguageOption key={idx} onClick={() => handleSortByChange(value)}>
+            <SorterOption key={idx} onClick={() => handleSortChange(value)}>
               {label}
-            </LanguageOption>
+            </SorterOption>
           ))}
-        </LanguageOptions>
-      </LanguageSelectorContainer>
+        </SorterOptions>
+      </SorterContainer>
     </ClickOutsideWrapper>
   );
 };
