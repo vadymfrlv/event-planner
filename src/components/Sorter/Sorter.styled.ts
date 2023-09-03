@@ -7,12 +7,12 @@ interface SorterOptionsProps {
   $active?: boolean;
 }
 
-const expandIconBaseStyles = css`
-  margin-left: 4px;
-  width: 24px;
-  height: 24px;
-  color: ${p => p.theme.colors.text};
-`;
+// const expandIconBaseStyles = css`
+//   margin-left: 4px;
+//   width: 24px;
+//   height: 24px;
+//   color: ${p => p.theme.colors.text};
+// `;
 
 export const SorterContainer = styled.div`
   position: relative;
@@ -42,13 +42,13 @@ export const SorterButton = styled.button<SorterOptionsProps>`
   cursor: pointer;
 `;
 
-export const ExpandMoreIconStyled = styled(MdExpandMore)`
-  ${expandIconBaseStyles}
-`;
+// export const ExpandMoreIconStyled = styled(MdExpandMore)`
+//   ${expandIconBaseStyles}
+// `;
 
-export const ExpandLessIconStyled = styled(MdExpandLess)`
-  ${expandIconBaseStyles}
-`;
+// export const ExpandLessIconStyled = styled(MdExpandLess)`
+//   ${expandIconBaseStyles}
+// `;
 
 export const SorterOptions = styled.ul<SorterOptionsProps>`
   position: absolute;
