@@ -1,1 +1,1 @@
-# SoftRyzen Test - Event Planner
+Event Planner
