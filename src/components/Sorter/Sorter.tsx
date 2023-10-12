@@ -5,25 +5,38 @@ import { ClickOutsideWrapper } from 'components/ClickOutsideWrapper/ClickOutside
 
 import {
   SorterContainer,
-  SorterButton,
+  SorterSelectorBtn,
+  SorterDescription,
+  SorterIconStyled,
+  SorterIconWrapper,
+  SorterTypeIconWrapper,
   SorterOptions,
   SorterOption,
-  ExpandLessIconStyled,
-  ExpandMoreIconStyled,
+  SorterTypeIncIconStyled,
+  SorterTypeDicIconStyled,
 } from './Sorter.styled';
 
 export const Sorter = () => {
   const [currentSort, setCurrentSort] = useState('');
+  const [currentSortIdx, setCurrentSortIdx] = useState<number | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const toggleDropdown = (event: React.MouseEvent) => {
-    event.stopPropagation();
-    setIsDropdownOpen(!isDropdownOpen);
+  const handleSortChange = (sortOption: string, sortIdx: number) => {
+    if (currentSortIdx === sortIdx) {
+      setCurrentSort('');
+      setCurrentSortIdx(null);
+      setIsDropdownOpen(false);
+      return;
+    }
+
+    setCurrentSort(sortOption);
+    setCurrentSortIdx(sortIdx);
+    setIsDropdownOpen(false);
   };
 
-  const handleSortChange = (sortByOption: string) => {
-    setCurrentSort(sortByOption);
-    setIsDropdownOpen(false);
+  const toggleSortDropdown = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    setIsDropdownOpen(!isDropdownOpen);
   };
 
   const handleOutsideClick = () => {
@@ -33,15 +46,34 @@ export const Sorter = () => {
   return (
     <ClickOutsideWrapper onClickOutside={handleOutsideClick}>
       <SorterContainer>
-        <SorterButton $sorterOptions={isDropdownOpen} onClick={toggleDropdown}>
-          {currentSort}
-          {isDropdownOpen ? <ExpandLessIconStyled /> : <ExpandMoreIconStyled />}
-        </SorterButton>
+        <SorterSelectorBtn
+          type="button"
+          $sorterOptions={isDropdownOpen}
+          $sorterSelected={!!currentSort}
+          onClick={toggleSortDropdown}
+        >
+          <SorterDescription $sorterOptions={isDropdownOpen}>
+            Sort by {currentSortIdx != null && sortOptions[currentSortIdx].key}
+          </SorterDescription>
+          {!currentSort || window.innerWidth < 768 ? <SorterIconStyled /> : null}
+          {currentSort && window.innerWidth >= 768 ? (
+            currentSort.split(' ')[1] === 'inc' ? (
+              <SorterTypeIncIconStyled />
+            ) : (
+              <SorterTypeDicIconStyled />
+            )
+          ) : null}
+        </SorterSelectorBtn>
 
         <SorterOptions $sorterOptions={isDropdownOpen}>
-          {sortOptions.map(({ value, label }, idx) => (
-            <SorterOption key={idx} onClick={() => handleSortChange(value)}>
+          {sortOptions.map(({ value, label, type }, idx) => (
+            <SorterOption
+              key={idx}
+              $active={currentSortIdx === idx}
+              onClick={() => handleSortChange(value + ' ' + type, idx)}
+            >
               {label}
+              {type === 'inc' ? <SorterTypeIncIconStyled /> : <SorterTypeDicIconStyled />}
             </SorterOption>
           ))}
         </SorterOptions>

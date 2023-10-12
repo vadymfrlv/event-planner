@@ -1,17 +1,16 @@
 import styled, { css } from 'styled-components';
-import { MdExpandMore, MdExpandLess } from 'react-icons/md';
+import { TbAdjustmentsHorizontal } from 'react-icons/tb';
+import { IoIosArrowRoundDown, IoIosArrowRoundUp } from 'react-icons/io';
 
-interface SorterOptionsProps {
+interface SorterProps {
   $sorterOptions?: boolean;
   $sorterSelected?: boolean;
   $active?: boolean;
 }
 
-const expandIconBaseStyles = css`
-  margin-left: 4px;
+const sharedIconsStyle = css`
   width: 24px;
   height: 24px;
-  color: ${p => p.theme.colors.text};
 `;
 
 export const SorterContainer = styled.div`
@@ -23,41 +22,61 @@ export const SorterContainer = styled.div`
   }
 `;
 
-export const SorterButton = styled.button<SorterOptionsProps>`
+export const SorterSelectorBtn = styled.button<SorterProps>`
   display: flex;
   align-items: center;
-  width: 69px;
-  height: 48px;
-  padding: 12px 4px 12px 12px;
+  justify-content: space-between;
+  width: ${p => (p.$sorterOptions ? '175px' : '56px')};
+  height: 56px;
+  padding: 16px;
   font-family: ${p => p.theme.fonts.main};
   font-weight: ${p => p.theme.fontWeights.medium};
   font-size: 16px;
   border: none;
 
-  color: ${p => p.theme.colors.text};
+  color: ${p => (p.$sorterSelected ? p.theme.colors.accent : p.theme.colors.text)};
 
   background-color: ${p => p.theme.colors.white};
   border-radius: ${p => p.theme.radii.eight};
   box-shadow: ${p => p.theme.shadows.elements};
   cursor: pointer;
+
+  @media (min-width: ${p => p.theme.screens.tab}) {
+    width: 175px;
+  }
+
+  &:hover {
+    color: ${p => p.theme.colors.accent};
+  }
 `;
 
-export const ExpandMoreIconStyled = styled(MdExpandMore)`
-  ${expandIconBaseStyles}
-`;
-
-export const ExpandLessIconStyled = styled(MdExpandLess)`
-  ${expandIconBaseStyles}
-`;
-
-export const SorterOptions = styled.ul<SorterOptionsProps>`
-  position: absolute;
+export const SorterDescription = styled.span<SorterProps>`
   display: ${p => (p.$sorterOptions ? 'block' : 'none')};
+
+  @media (min-width: ${p => p.theme.screens.tab}) {
+    display: block;
+  }
+`;
+
+export const SorterIconStyled = styled(TbAdjustmentsHorizontal)`
+  ${sharedIconsStyle}
+`;
+
+// export const SorterIconWrapper = styled(SorterIconStyled)`
+//   display: block;
+
+//   @media (min-width: ${p => p.theme.screens.tab}) {
+//     display: none;
+//   }
+// `;
+
+export const SorterOptions = styled.ul<SorterProps>`
+  position: absolute;
+  visibility: ${p => (p.$sorterOptions ? 'visible' : 'hidden')};
   top: ${p => (p.$sorterOptions ? '63px' : '48px')};
   left: 0;
-  padding: 16px 12px;
   margin: 0 auto;
-  width: 45px;
+  width: 175px;
   background-color: ${p => p.theme.colors.white};
   border-radius: ${p => p.theme.radii.eight};
   box-shadow: ${p => p.theme.shadows.elements};
@@ -65,22 +84,42 @@ export const SorterOptions = styled.ul<SorterOptionsProps>`
   transition: top 250ms ease-in-out, opacity 300ms ease-in-out;
 `;
 
-export const SorterOption = styled.li`
-  font-size: 16px;
+export const SorterOption = styled.li<SorterProps>`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
   line-height: 20px;
-  padding-bottom: 4px;
+  color: ${p => (p.$active ? p.theme.colors.accent : p.theme.colors.divider)};
   cursor: pointer;
-  border-bottom: ${p => p.theme.borders.listDivider};
-  color: ${p => p.theme.colors.divider};
   font-weight: ${p => p.theme.fontWeights.medium};
+  padding: 8px 16px 8px 24px;
 
   &:not(:last-child) {
-    margin-bottom: 8px;
+    border-bottom: ${p =>
+      p.$active ? p.theme.borders.listDividerActive : p.theme.borders.listDivider};
   }
 
-  &:hover,
-  &:focus {
+  &:hover {
     color: ${p => p.theme.colors.accent};
-    border-bottom: ${p => p.theme.borders.listDividerHover};
+
+    &:not(:last-child) {
+      border-bottom: ${p => p.theme.borders.listDividerHover};
+    }
   }
+`;
+
+export const SorterTypeIncIconStyled = styled(IoIosArrowRoundUp)`
+  ${sharedIconsStyle}/* display: none; */
+
+  /* @media (min-width: ${p => p.theme.screens.tab}) {
+    display: block;
+  } */
+`;
+
+export const SorterTypeDicIconStyled = styled(IoIosArrowRoundDown)`
+  ${sharedIconsStyle}/* display: none; */
+  /* @media (min-width: ${p => p.theme.screens.tab}) {
+    display: block;
+  } */
 `;
