@@ -5,7 +5,7 @@ import { ClickOutsideWrapper } from 'components/ClickOutsideWrapper/ClickOutside
 
 import {
   FilterContainer,
-  FilterSelectorButton,
+  FilterSelectorBtn,
   FilterDescription,
   FilterOptions,
   FilterOption,
@@ -41,7 +41,8 @@ export const Filter = () => {
   return (
     <ClickOutsideWrapper onClickOutside={handleOutsideClick}>
       <FilterContainer>
-        <FilterSelectorButton
+        <FilterSelectorBtn
+          type="button"
           $filterOptions={isDropdownOpen}
           $filterSelected={!!currentFilter}
           onClick={toggleFilterDropdown}
@@ -50,7 +51,7 @@ export const Filter = () => {
             {currentFilter || 'Category'}
           </FilterDescription>
           <FilterIconStyled />
-        </FilterSelectorButton>
+        </FilterSelectorBtn>
 
         <FilterOptions $filterOptions={isDropdownOpen}>
           {filterOptions.map(({ value, label }) => (

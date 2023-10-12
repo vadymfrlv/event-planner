@@ -16,7 +16,7 @@ export const FilterContainer = styled.div`
   }
 `;
 
-export const FilterSelectorButton = styled.button<FilterProps>`
+export const FilterSelectorBtn = styled.button<FilterProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;
