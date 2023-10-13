@@ -8,19 +8,25 @@ interface FilterProps {
 }
 
 export const FilterContainer = styled.div`
-  position: relative;
   display: inline-block;
 
   @media (min-width: ${p => p.theme.screens.tab}) {
+    position: relative;
     margin-right: 24px;
   }
 `;
 
 export const FilterSelectorBtn = styled.button<FilterProps>`
+  position: absolute;
+  top: 0;
+  right: 70%;
+  transform: ${p => (p.$filterOptions ? 'translateX(95.5px)' : 'translateX(0)')};
+  z-index: ${p => (p.$filterOptions ? 2 : 0)};
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: ${p => (p.$filterOptions ? '154px' : '56px')};
+  width: ${p => (p.$filterOptions ? '177px' : '56px')};
   height: 56px;
   padding: 16px;
   font-family: ${p => p.theme.fonts.main};
@@ -36,6 +42,9 @@ export const FilterSelectorBtn = styled.button<FilterProps>`
   cursor: pointer;
 
   @media (min-width: ${p => p.theme.screens.tab}) {
+    position: static;
+    transform: none;
+    align-items: normal;
     width: 154px;
   }
 
@@ -63,12 +72,16 @@ export const FilterOptions = styled.ul<FilterProps>`
   top: ${p => (p.$filterOptions ? '63px' : '48px')};
   left: 0;
   margin: 0 auto;
-  width: 154px;
+  width: 177px;
   background-color: ${p => p.theme.colors.white};
   border-radius: ${p => p.theme.radii.eight};
   box-shadow: ${p => p.theme.shadows.elements};
   opacity: ${p => (p.$filterOptions ? 1 : 0)};
   transition: top 250ms ease-in-out, opacity 300ms ease-in-out;
+
+  @media (min-width: ${p => p.theme.screens.tab}) {
+    width: 154px;
+  }
 `;
 
 export const FilterOption = styled.li<FilterProps>`

@@ -14,19 +14,22 @@ const sharedIconsStyle = css`
 `;
 
 export const SorterContainer = styled.div`
-  position: relative;
   display: inline-block;
-  margin-left: 24px;
 
   @media (min-width: ${p => p.theme.screens.tab}) {
+    position: relative;
     margin-right: 24px;
   }
 `;
 
 export const SorterSelectorBtn = styled.button<SorterProps>`
+  position: absolute;
+  top: 0;
+  right: 35%;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  width: ${p => (p.$sorterOptions ? '175px' : '56px')};
+  width: ${p => (p.$sorterOptions ? '177px' : '56px')};
   height: 56px;
   padding: 16px;
   font-family: ${p => p.theme.fonts.main};
@@ -42,7 +45,9 @@ export const SorterSelectorBtn = styled.button<SorterProps>`
   cursor: pointer;
 
   @media (min-width: ${p => p.theme.screens.tab}) {
-    width: 175px;
+    position: static;
+    align-items: normal;
+    width: 177px;
   }
 
   &:hover {
@@ -82,7 +87,7 @@ export const SorterOptions = styled.ul<SorterProps>`
   top: ${p => (p.$sorterOptions ? '63px' : '48px')};
   left: 0;
   margin: 0 auto;
-  width: 175px;
+  width: 177px;
   background-color: ${p => p.theme.colors.white};
   border-radius: ${p => p.theme.radii.eight};
   box-shadow: ${p => p.theme.shadows.elements};
