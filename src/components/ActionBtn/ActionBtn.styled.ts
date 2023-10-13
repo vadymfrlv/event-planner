@@ -33,8 +33,6 @@ export const ActionLinkStyled = styled(Link)`
   width: 24px;
   height: 24px;
 
-  margin-left: 24px;
-
   font-size: 16px;
   box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
   transition: background-color 250ms ease-in-out;
