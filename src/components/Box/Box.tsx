@@ -46,6 +46,11 @@ export const ResponsiveBox = styled(BaseBox)(
       padding: 0 40px;
     }
 
+    @media screen and (min-width: ${breakpoints.NOTE}) {
+      max-width: calc(${breakpoints.NOTE} - 160px);
+      padding: 0 80px;
+    }
+
     @media screen and (min-width: ${breakpoints.DESK}) {
       max-width: calc(${breakpoints.DESK} - 160px);
       padding: 0 80px;
