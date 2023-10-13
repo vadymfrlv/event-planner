@@ -16,6 +16,7 @@ const sharedIconsStyle = css`
 export const SorterContainer = styled.div`
   position: relative;
   display: inline-block;
+  margin-left: 24px;
 
   @media (min-width: ${p => p.theme.screens.tab}) {
     margin-right: 24px;
@@ -24,7 +25,6 @@ export const SorterContainer = styled.div`
 
 export const SorterSelectorBtn = styled.button<SorterProps>`
   display: flex;
-  align-items: center;
   justify-content: space-between;
   width: ${p => (p.$sorterOptions ? '175px' : '56px')};
   height: 56px;
@@ -58,17 +58,23 @@ export const SorterDescription = styled.span<SorterProps>`
   }
 `;
 
-export const SorterIconStyled = styled(TbAdjustmentsHorizontal)`
+export const SorterIconStyled = styled(TbAdjustmentsHorizontal)<SorterProps>`
   ${sharedIconsStyle}
+
+  display: block;
+
+  @media (min-width: ${p => p.theme.screens.tab}) {
+    display: ${p => (p.$active ? 'none' : 'block')};
+  }
 `;
 
-// export const SorterIconWrapper = styled(SorterIconStyled)`
-//   display: block;
+export const SorterTypeIconsWrapper = styled.div<SorterProps>`
+  display: none;
 
-//   @media (min-width: ${p => p.theme.screens.tab}) {
-//     display: none;
-//   }
-// `;
+  @media (min-width: ${p => p.theme.screens.tab}) {
+    display: ${p => (p.$active ? 'none' : 'block')};
+  }
+`;
 
 export const SorterOptions = styled.ul<SorterProps>`
   position: absolute;
@@ -110,16 +116,9 @@ export const SorterOption = styled.li<SorterProps>`
 `;
 
 export const SorterTypeIncIconStyled = styled(IoIosArrowRoundUp)`
-  ${sharedIconsStyle}/* display: none; */
-
-  /* @media (min-width: ${p => p.theme.screens.tab}) {
-    display: block;
-  } */
+  ${sharedIconsStyle}
 `;
 
 export const SorterTypeDicIconStyled = styled(IoIosArrowRoundDown)`
-  ${sharedIconsStyle}/* display: none; */
-  /* @media (min-width: ${p => p.theme.screens.tab}) {
-    display: block;
-  } */
+  ${sharedIconsStyle}
 `;

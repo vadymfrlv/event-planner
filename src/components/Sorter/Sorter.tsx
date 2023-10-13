@@ -8,8 +8,7 @@ import {
   SorterSelectorBtn,
   SorterDescription,
   SorterIconStyled,
-  SorterIconWrapper,
-  SorterTypeIconWrapper,
+  SorterTypeIconsWrapper,
   SorterOptions,
   SorterOption,
   SorterTypeIncIconStyled,
@@ -55,14 +54,14 @@ export const Sorter = () => {
           <SorterDescription $sorterOptions={isDropdownOpen}>
             Sort by {currentSortIdx != null && sortOptions[currentSortIdx].key}
           </SorterDescription>
-          {!currentSort || window.innerWidth < 768 ? <SorterIconStyled /> : null}
-          {currentSort && window.innerWidth >= 768 ? (
-            currentSort.split(' ')[1] === 'inc' ? (
+          <SorterIconStyled $active={!!currentSort} />
+          <SorterTypeIconsWrapper $active={!currentSort}>
+            {currentSort && currentSort.split(' ')[1] === 'inc' ? (
               <SorterTypeIncIconStyled />
             ) : (
               <SorterTypeDicIconStyled />
-            )
-          ) : null}
+            )}
+          </SorterTypeIconsWrapper>
         </SorterSelectorBtn>
 
         <SorterOptions $sorterOptions={isDropdownOpen}>
