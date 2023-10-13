@@ -56,6 +56,7 @@ export const theme = {
   screens: {
     mob: breakpoints.MOB,
     tab: breakpoints.TAB,
+    note: breakpoints.NOTE,
     desk: breakpoints.DESK,
   },
 };
