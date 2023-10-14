@@ -10,12 +10,14 @@
     "baseUrl": "src",
     "paths": {
       "components/*": ["components/*"],
+      "assets/*": ["assets/*"],
       "pages/*": ["pages/*"],
       "services/*": ["services/*"],
       "utils/*": ["utils/*"],
       "styles/*": ["styles/*"],
       "constants/*": ["constants/*"],
-      "hooks/*": ["hooks/*"]
+      "hooks/*": ["hooks/*"],
+      "types/*": ["types/*"]
     },
 
     /* Bundler mode */
