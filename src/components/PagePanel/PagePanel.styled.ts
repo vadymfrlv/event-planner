@@ -12,6 +12,7 @@ export const PagePanelBtnsWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  z-index: 100;
 
   @media (min-width: ${p => p.theme.screens.note}) {
     position: static;
