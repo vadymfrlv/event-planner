@@ -7,7 +7,7 @@ export const theme = {
     placeholders: '#888888',
     accent: '#7B61FF',
     divider: '#ACA7C3',
-    hight: '#FF2B77',
+    high: '#FF2B77',
     medium: '#E2A300',
     low: '#6BD475',
     background: '#FEFCFF',
