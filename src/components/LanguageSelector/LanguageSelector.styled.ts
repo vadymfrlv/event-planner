@@ -61,7 +61,7 @@ export const LanguageOptions = styled.ul<LanguageOptionsProps>`
   box-shadow: ${p => p.theme.shadows.elements};
   opacity: ${p => (p.$languageOptions ? 1 : 0)};
   transition: top 250ms ease-in-out, opacity 300ms ease-in-out;
-  z-index: ${p => p.theme.zIndices[6]};
+  z-index: 101;
 `;
 
 export const LanguageOption = styled.li`
