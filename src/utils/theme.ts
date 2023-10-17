@@ -4,6 +4,8 @@ export const theme = {
   colors: {
     white: '#FFFFFF',
     text: '#3F3F3F',
+    eventTitle: '#1C1B1F',
+    eventDescr: '#49454F',
     placeholders: '#888888',
     accent: '#7B61FF',
     divider: '#ACA7C3',
@@ -12,6 +14,7 @@ export const theme = {
     low: '#6BD475',
     background: '#FEFCFF',
     btnHover: '#6243FF',
+    btnDisabled: '#ACA7C3',
   },
   fonts: {
     main: 'Poppins',
