@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 
 interface TextProps {
   $priorityLevel?: string;
+  $isDisabled?: boolean;
 }
 
-const sharedStyles = css`
+const sharedStylesForCategoryPriority = css`
   padding: 6px 12px;
   background-color: ${p => p.theme.colors.white};
   border-radius: ${p => p.theme.radii.eight};
@@ -13,6 +14,16 @@ const sharedStyles = css`
   font-size: 14px;
   font-weight: ${p => p.theme.fontWeights.medium};
   line-height: 20px;
+
+  box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
+`;
+
+const sharedStylesForDateTimeLocation = css`
+  color: ${p => p.theme.colors.accent};
+  font-family: ${p => p.theme.fonts.main};
+  font-size: 14px;
+  font-weight: ${p => p.theme.fontWeights.regular};
+  line-height: 24px;
 `;
 
 export const EventListItemStyled = styled.li`
@@ -22,7 +33,6 @@ export const EventListItemStyled = styled.li`
   height: 480px;
   overflow: hidden;
   cursor: pointer;
-  background-color: grey;
 
   &:not(:last-child) {
     margin-bottom: 24px;
@@ -33,7 +43,13 @@ export const EventListItemStyled = styled.li`
   }
 
   &:hover {
-    box-shadow: -2.5777px 6.87386px 20.6216px rgba(0, 0, 0, 0.23);
+    & .hover-effect {
+      transform: translateY(-104px);
+
+      @media (min-width: ${p => p.theme.screens.tab}) {
+        transform: translateY(-96px);
+      }
+    }
   }
 `;
 
@@ -45,13 +61,13 @@ export const CategoryPriorityWrapper = styled.div`
 `;
 
 export const EventCategory = styled.span`
-  ${sharedStyles}
+  ${sharedStylesForCategoryPriority}
   margin-right: 12px;
   color: ${p => p.theme.colors.accent};
 `;
 
 export const EventPriority = styled.span<TextProps>`
-  ${sharedStyles}
+  ${sharedStylesForCategoryPriority}
   color: ${p => {
     if (p.$priorityLevel === 'medium') {
       return p.theme.colors.medium;
@@ -75,5 +91,81 @@ export const EventPicture = styled.img`
 
   @media (min-width: ${p => p.theme.screens.desk}) {
     width: 302px;
+  }
+`;
+
+export const EventInfoThumb = styled.div`
+  transform: translateY(-40px);
+  transition: transform 250ms ease-in-out;
+`;
+
+export const DateTimeLocationWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  padding: 8px 16px;
+
+  background-color: rgba(255, 255, 255, 0.8);
+`;
+
+export const EventDateAndTime = styled.span`
+  ${sharedStylesForDateTimeLocation}
+`;
+
+export const EventLocation = styled.span`
+  ${sharedStylesForDateTimeLocation}
+`;
+
+export const EventTitleDescrWrapper = styled.div`
+  background-color: ${p => p.theme.colors.white};
+  padding: 16px;
+`;
+
+export const EventTitle = styled.h2`
+  padding-bottom: 16px;
+  color: ${p => p.theme.colors.eventTitle};
+  font-family: ${p => p.theme.fonts.main};
+  font-size: 16px;
+  font-weight: ${p => p.theme.fontWeights.medium};
+  line-height: 24px;
+  text-transform: capitalize;
+`;
+
+export const EventDescr = styled.p`
+  padding-bottom: 16px;
+  height: 72px;
+  color: ${p => p.theme.colors.EventDescr};
+  font-family: ${p => p.theme.fonts.main};
+  font-size: 14px;
+
+  font-weight: ${p => p.theme.fontWeights.regular};
+  line-height: 20px;
+`;
+
+export const MoreInfoLink = styled(Link)<TextProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 114px;
+  margin-left: auto;
+  box-sizing: border-box;
+
+  padding: 10px 24px;
+
+  border-radius: 8px;
+  background: ${p => (p.$isDisabled ? p.theme.colors.btnDisabled : p.theme.colors.accent)};
+  transition: background-color 250ms ease-in-out;
+
+  color: ${p => p.theme.colors.white};
+  font-size: 14px;
+  font-family: ${p => p.theme.fonts.main};
+  font-weight: ${p => p.theme.fontWeights.medium};
+  line-height: 20px;
+
+  pointer-events: ${p => (p.$isDisabled ? 'none' : 'all')};
+
+  &:hover {
+    background-color: ${p =>
+      p.$isDisabled ? p.theme.colors.btnDisabled : p.theme.colors.btnHover};
   }
 `;
