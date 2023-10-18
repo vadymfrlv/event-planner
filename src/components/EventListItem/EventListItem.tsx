@@ -1,3 +1,5 @@
+import { useLocation } from 'react-router-dom';
+
 import { Event } from 'types/event';
 import { convertTime } from 'utils/helpers/convertTime';
 import { convertDate } from 'utils/helpers/convertDate';
@@ -24,6 +26,7 @@ import {
 export const EventListItem = (props: Event) => {
   const { id, title, description, time, date, location, category, picture, priority } = props;
 
+  const linkLocation = useLocation();
   const convertedTime = convertTime(time);
   const convertedDate = convertDate(date);
   const displayText = ellipsisText(description, 100);
@@ -51,7 +54,11 @@ export const EventListItem = (props: Event) => {
         <EventTitleDescrWrapper>
           <EventTitle>{title}</EventTitle>
           <EventDescr>{displayText}</EventDescr>
-          <MoreInfoLink to={`event/${id}`} $isDisabled={checkEventStatus(date)}>
+          <MoreInfoLink
+            to={`event/${id}`}
+            state={{ from: linkLocation }}
+            $isDisabled={checkEventStatus(date)}
+          >
             {checkEventStatus(date) ? 'Expired' : 'More info'}
           </MoreInfoLink>
         </EventTitleDescrWrapper>
