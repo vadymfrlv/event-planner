@@ -17,3 +17,17 @@ export const fetchEvents = async (): Promise<Event[]> => {
     throw error;
   }
 };
+
+export const fetchEventById = async (eventId: string | undefined): Promise<Event> => {
+  try {
+    const response: AxiosResponse<Event> = await axios(`/events/${eventId}`);
+    if (response.status !== 200) {
+      throw new Error('Oops something went wrong!');
+    }
+    const { data } = response;
+    return data;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
