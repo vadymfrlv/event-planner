@@ -7,9 +7,6 @@ axios.defaults.baseURL = 'https://6527bc53931d71583df149e3.mockapi.io';
 export const fetchEvents = async (): Promise<Event[]> => {
   try {
     const response: AxiosResponse<Event[]> = await axios('/events');
-    if (response.status !== 200) {
-      throw new Error('Oops something went wrong!');
-    }
     const { data } = response;
     return data;
   } catch (error) {
@@ -18,12 +15,9 @@ export const fetchEvents = async (): Promise<Event[]> => {
   }
 };
 
-export const fetchEventById = async (eventId: string | undefined): Promise<Event> => {
+export const fetchEventById = async (eventId: string): Promise<Event> => {
   try {
     const response: AxiosResponse<Event> = await axios(`/events/${eventId}`);
-    if (response.status !== 200) {
-      throw new Error('Oops something went wrong!');
-    }
     const { data } = response;
     return data;
   } catch (error) {

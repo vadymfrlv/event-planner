@@ -5,8 +5,13 @@ import { fetchEventById } from 'services/eventsApi';
 
 export const useEventByIdQuery = () => {
   const { eventId } = useParams();
+
   return useQuery({
-    queryFn: () => fetchEventById(eventId),
+    queryFn: () => {
+      if (eventId) {
+        return fetchEventById(eventId);
+      }
+    },
     queryKey: ['event', eventId],
     staleTime: 1000 * 5,
     onError: error => {
