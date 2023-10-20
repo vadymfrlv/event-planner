@@ -3,7 +3,6 @@ import { Outlet } from 'react-router-dom';
 
 import { AppBar } from 'components/AppBar/AppBar';
 import { ResponsiveBox } from 'components/Box/Box.jsx';
-import { Loader } from 'components/Loader/Loader';
 
 import { MainStyled } from './Layout.styled';
 
@@ -14,7 +13,7 @@ export const Layout = () => {
 
       <MainStyled>
         <ResponsiveBox>
-          <Suspense fallback={<Loader />}>
+          <Suspense fallback={null}>
             <Outlet />
           </Suspense>
         </ResponsiveBox>
