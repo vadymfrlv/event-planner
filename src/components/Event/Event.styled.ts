@@ -1,4 +1,29 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+interface TextProps {
+  $priorityLevel?: string;
+  $isDisabled?: boolean;
+}
+
+const sharedStylesForCategoryPriority = css`
+  padding: 6px 12px;
+  background-color: ${p => p.theme.colors.white};
+  border-radius: ${p => p.theme.radii.eight};
+
+  font-size: 14px;
+  font-weight: ${p => p.theme.fontWeights.medium};
+  line-height: 20px;
+
+  box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
+`;
+
+const sharedStylesForDateTimeLocation = css`
+  color: ${p => p.theme.colors.accent};
+  font-family: ${p => p.theme.fonts.main};
+  font-size: 14px;
+  font-weight: ${p => p.theme.fontWeights.regular};
+  line-height: 24px;
+`;
 
 export const EventWrapper = styled.div`
   display: flex;
@@ -57,4 +82,31 @@ export const EventDescr = styled.p`
 
   font-weight: ${p => p.theme.fontWeights.regular};
   line-height: 20px;
+`;
+
+export const EventCategory = styled.span`
+  ${sharedStylesForCategoryPriority}
+  margin-right: 12px;
+  color: ${p => p.theme.colors.accent};
+`;
+
+export const EventPriority = styled.span<TextProps>`
+  ${sharedStylesForCategoryPriority}
+  color: ${p => {
+    if (p.$priorityLevel === 'medium') {
+      return p.theme.colors.medium;
+    } else if (p.$priorityLevel === 'high') {
+      return p.theme.colors.high;
+    } else {
+      return p.theme.colors.low;
+    }
+  }};
+`;
+
+export const EventDateAndTime = styled.span`
+  ${sharedStylesForDateTimeLocation}
+`;
+
+export const EventLocation = styled.span`
+  ${sharedStylesForDateTimeLocation}
 `;
