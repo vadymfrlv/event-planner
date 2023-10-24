@@ -1,11 +1,13 @@
 import styled, { css } from 'styled-components';
+import { Link } from 'react-router-dom';
 
 interface TextProps {
   $priorityLevel?: string;
   $isDisabled?: boolean;
 }
 
-const sharedStylesForCategoryPriority = css`
+const sharedStyles = css`
+  margin: 6px;
   padding: 6px 12px;
   background-color: ${p => p.theme.colors.white};
   border-radius: ${p => p.theme.radii.eight};
@@ -14,25 +16,19 @@ const sharedStylesForCategoryPriority = css`
   font-weight: ${p => p.theme.fontWeights.medium};
   line-height: 20px;
 
-  box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
-`;
-
-const sharedStylesForDateTimeLocation = css`
   color: ${p => p.theme.colors.accent};
-  font-family: ${p => p.theme.fonts.main};
-  font-size: 14px;
-  font-weight: ${p => p.theme.fontWeights.regular};
-  line-height: 24px;
+  box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
 `;
 
 export const EventWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 24px;
+  margin-top: 24px;
+  border: 2px solid red;
 
   @media (min-width: ${p => p.theme.screens.note}) {
-    padding-top: 17px;
+    margin-top: 17px;
   }
 `;
 
@@ -42,56 +38,75 @@ export const Title = styled.h2`
   font-size: 24px;
   font-weight: ${p => p.theme.fontWeights.semiBold};
   line-height: normal;
+  margin-right: auto;
 
   @media (min-width: ${p => p.theme.screens.tab}) {
     font-size: 32px;
   }
 `;
 
-export const EventInfoThumb = styled.div`
-  padding: 10px;
-`;
+export const EventThumb = styled.div`
+  margin-top: 24px;
 
-export const EventPicture = styled.img`
-  height: 168px;
-  width: 272px;
+  border-radius: ${p => p.theme.radii.eight};
+  background-color: ${p => p.theme.colors.white};
+  box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
 
-  object-fit: cover;
+  overflow: hidden;
 
   @media (min-width: ${p => p.theme.screens.tab}) {
-    height: 272px;
     width: 688px;
   }
 
   @media (min-width: ${p => p.theme.screens.note}) {
     width: 628px;
+    font-size: 14px;
   }
+`;
 
-  @media (min-width: ${p => p.theme.screens.desk}) {
-    height: 348px;
-    width: 800px;
+export const EventPicture = styled.img`
+  height: 168px;
+  width: 100%;
+
+  object-fit: cover;
+
+  @media (min-width: ${p => p.theme.screens.tab}) {
+    height: 272px;
+  }
+`;
+
+export const EventInfoThumb = styled.div`
+  padding: 20px 16px 40px;
+
+  @media (min-width: ${p => p.theme.screens.tab}) {
+    padding: 20px 24px 40px;
   }
 `;
 
 export const EventDescr = styled.p`
-  padding-bottom: 16px;
-  height: 72px;
-  color: ${p => p.theme.colors.EventDescr};
-  font-family: ${p => p.theme.fonts.main};
-  font-size: 14px;
+  margin-bottom: 24px;
 
+  font-family: ${p => p.theme.fonts.main};
   font-weight: ${p => p.theme.fontWeights.regular};
+  font-size: 14px;
   line-height: 20px;
+
+  color: ${p => p.theme.colors.EventDescr};
+`;
+
+export const EventDetailsThumb = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin: -6px;
 `;
 
 export const EventCategory = styled.span`
-  ${sharedStylesForCategoryPriority}
-  margin-right: 12px;
-  color: ${p => p.theme.colors.accent};
+  ${sharedStyles}
 `;
 
 export const EventPriority = styled.span<TextProps>`
-  ${sharedStylesForCategoryPriority}
+  ${sharedStyles}
+
   color: ${p => {
     if (p.$priorityLevel === 'medium') {
       return p.theme.colors.medium;
@@ -103,10 +118,81 @@ export const EventPriority = styled.span<TextProps>`
   }};
 `;
 
-export const EventDateAndTime = styled.span`
-  ${sharedStylesForDateTimeLocation}
+export const EventLocation = styled.span`
+  ${sharedStyles}
 `;
 
-export const EventLocation = styled.span`
-  ${sharedStylesForDateTimeLocation}
+export const EventDateAndTime = styled.span`
+  ${sharedStyles}
+`;
+
+export const EventBtnsThumb = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  margin-top: 40px;
+
+  @media (min-width: ${p => p.theme.screens.note}) {
+    margin-top: 24px;
+  }
+`;
+
+export const EventEditBtn = styled(Link)`
+  box-sizing: border-box;
+  height: 32px;
+  width: 108px;
+  margin-right: 12px;
+  padding: 8px 16px;
+
+  font-family: ${p => p.theme.fonts.main};
+  font-weight: ${p => p.theme.fontWeights.medium};
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+
+  color: ${p => p.theme.colors.accent};
+  background-color: ${p => p.theme.colors.white};
+  border-radius: 4px;
+  border: 1px solid ${p => p.theme.colors.accent};
+
+  transition: background-color 250ms ease-in-out, border-color 250ms ease-in-out;
+
+  &:hover {
+    color: ${p => p.theme.colors.btnHover};
+    border: 1px solid ${p => p.theme.colors.btnHover};
+  }
+
+  @media (min-width: ${p => p.theme.screens.tab}) {
+    width: 55px;
+    margin-right: 8px;
+  }
+`;
+
+export const EventDeleteBtn = styled.button`
+  box-sizing: border-box;
+  height: 32px;
+  width: 108px;
+
+  margin-left: 12px;
+  padding: 8px 16px;
+
+  font-family: ${p => p.theme.fonts.main};
+  font-weight: ${p => p.theme.fontWeights.medium};
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+
+  color: ${p => p.theme.colors.white};
+  background: ${p => p.theme.colors.accent};
+  border-radius: 4px;
+  transition: background-color 250ms ease-in-out;
+
+  &:hover {
+    background-color: ${p => p.theme.colors.btnHover};
+  }
+
+  @media (min-width: ${p => p.theme.screens.tab}) {
+    margin-left: 8px;
+  }
 `;
