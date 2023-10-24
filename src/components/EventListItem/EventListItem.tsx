@@ -55,7 +55,7 @@ export const EventListItem = (props: Event) => {
           <EventTitle>{title}</EventTitle>
           <EventDescr>{displayText}</EventDescr>
           <MoreInfoLink
-            to={`event/${id}`}
+            to={`/event/${id}`}
             state={{ from: linkLocation }}
             $isDisabled={checkEventStatus(date)}
           >

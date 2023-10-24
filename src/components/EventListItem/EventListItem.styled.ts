@@ -122,7 +122,7 @@ export const EventTitleDescrWrapper = styled.div`
 `;
 
 export const EventTitle = styled.h2`
-  padding-bottom: 16px;
+  margin-bottom: 16px;
   color: ${p => p.theme.colors.eventTitle};
   font-family: ${p => p.theme.fonts.main};
   font-size: 16px;
@@ -132,7 +132,7 @@ export const EventTitle = styled.h2`
 `;
 
 export const EventDescr = styled.p`
-  padding-bottom: 16px;
+  margin-bottom: 16px;
   height: 72px;
   color: ${p => p.theme.colors.EventDescr};
   font-family: ${p => p.theme.fonts.main};
@@ -153,7 +153,7 @@ export const MoreInfoLink = styled(Link)<TextProps>`
   padding: 10px 24px;
 
   border-radius: 8px;
-  background: ${p => (p.$isDisabled ? p.theme.colors.btnDisabled : p.theme.colors.accent)};
+  background-color: ${p => (p.$isDisabled ? p.theme.colors.btnDisabled : p.theme.colors.accent)};
   transition: background-color 250ms ease-in-out;
 
   color: ${p => p.theme.colors.white};
