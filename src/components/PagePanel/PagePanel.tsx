@@ -11,7 +11,7 @@ export const PagePanel = () => {
       <PagePanelBtnsWrapper>
         <Filter />
         <Sorter />
-        <ActionBtn description="Add new event" isLink to="createEvent" />
+        <ActionBtn description="Add new event" isLink to="create-event" />
       </PagePanelBtnsWrapper>
       <PageTitle title="My events" />
     </PagePanelWrapper>
