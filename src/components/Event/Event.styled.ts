@@ -138,6 +138,9 @@ export const EventBtnsThumb = styled.div`
 `;
 
 export const EventEditBtnWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-sizing: border-box;
   height: 32px;
   width: 108px;
@@ -148,7 +151,6 @@ export const EventEditBtnWrapper = styled.div`
   font-weight: ${p => p.theme.fontWeights.medium};
   font-size: 12px;
   line-height: 16px;
-  text-align: center;
 
   color: ${p => p.theme.colors.accent};
   background-color: ${p => p.theme.colors.white};
