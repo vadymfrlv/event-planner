@@ -60,11 +60,9 @@ export const Event = () => {
               </EventDetailsThumb>
 
               <EventBtnsThumb>
-                <EventEditBtnWrapper>
-                  <Link to={`/event-edit/${id}`} state={{ from: linkLocation }}>
-                    Edit
-                  </Link>
-                </EventEditBtnWrapper>
+                <Link to={`/event-edit/${id}`} state={{ from: linkLocation }}>
+                  <EventEditBtnWrapper>Edit</EventEditBtnWrapper>
+                </Link>
                 <EventDeleteBtn>Delete event</EventDeleteBtn>
               </EventBtnsThumb>
             </EventInfoThumb>
