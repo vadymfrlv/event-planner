@@ -24,11 +24,11 @@ export const EventWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 24px;
-  border: 2px solid red;
+  margin: 24px auto 0;
 
   @media (min-width: ${p => p.theme.screens.note}) {
-    margin-top: 17px;
+    width: 628px;
+    margin: 17px auto 0;
   }
 `;
 
@@ -138,7 +138,7 @@ export const EventBtnsThumb = styled.div`
   }
 `;
 
-export const EventEditBtn = styled(Link)`
+export const EventEditBtnWrapper = styled.div`
   box-sizing: border-box;
   height: 32px;
   width: 108px;

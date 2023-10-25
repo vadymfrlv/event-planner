@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 
 import { useEventByIdQuery } from 'utils/hooks/useEventByIdQuery';
 
@@ -22,7 +22,7 @@ import {
   EventLocation,
   EventDateAndTime,
   EventBtnsThumb,
-  EventEditBtn,
+  EventEditBtnWrapper,
   EventDeleteBtn,
 } from './Event.styled';
 
@@ -60,9 +60,11 @@ export const Event = () => {
               </EventDetailsThumb>
 
               <EventBtnsThumb>
-                <EventEditBtn to={`/event-edit/${id}`} state={{ from: linkLocation }}>
-                  Edit
-                </EventEditBtn>
+                <EventEditBtnWrapper>
+                  <Link to={`/event-edit/${id}`} state={{ from: linkLocation }}>
+                    Edit
+                  </Link>
+                </EventEditBtnWrapper>
                 <EventDeleteBtn>Delete event</EventDeleteBtn>
               </EventBtnsThumb>
             </EventInfoThumb>
