@@ -6,7 +6,7 @@ export const useEventsQuery = () => {
   return useQuery({
     queryFn: () => fetchEvents(),
     queryKey: ['events'],
-    staleTime: 1000 * 5,
+    staleTime: 2000 * 5,
     onError: error => {
       if (error instanceof Error) {
         console.error(error);
