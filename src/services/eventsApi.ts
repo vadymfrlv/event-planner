@@ -25,3 +25,12 @@ export const fetchEventById = async (eventId: string): Promise<Event> => {
     throw error;
   }
 };
+
+export const deleteEventById = async (eventId: string): Promise<void> => {
+  try {
+    await axios.delete(`/events/${eventId}`);
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
