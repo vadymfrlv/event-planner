@@ -1,6 +1,7 @@
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 
 import { useEventByIdQuery } from 'utils/hooks/useEventByIdQuery';
+import { useDeleteEventByIdMutation } from 'utils/hooks/useDeleteEventByIdMutation';
 
 import { Loader } from 'components/Loader/Loader';
 import { convertTime } from 'utils/helpers/convertTime';
@@ -28,8 +29,10 @@ import {
 
 export const Event = () => {
   const { data: event, isFetching, isSuccess, isError } = useEventByIdQuery();
+  const deleteEventMutation = useDeleteEventByIdMutation();
 
   const linkLocation = useLocation();
+  const navigate = useNavigate();
 
   if (!event) {
     return;
@@ -39,6 +42,11 @@ export const Event = () => {
 
   const convertedTime = convertTime(time);
   const convertedDate = convertDate(date);
+
+  const handleDeleteEvent = (eventId: string) => {
+    deleteEventMutation.mutate(eventId);
+    navigate('/', { replace: true });
+  };
 
   return (
     <>
@@ -63,7 +71,9 @@ export const Event = () => {
                 <Link to={`/event-edit/${id}`} state={{ from: linkLocation }}>
                   <EventEditBtnWrapper>Edit</EventEditBtnWrapper>
                 </Link>
-                <EventDeleteBtn>Delete event</EventDeleteBtn>
+                <EventDeleteBtn type="button" onClick={() => handleDeleteEvent(id)}>
+                  Delete event
+                </EventDeleteBtn>
               </EventBtnsThumb>
             </EventInfoThumb>
           </EventThumb>
