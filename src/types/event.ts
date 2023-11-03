@@ -19,3 +19,8 @@ export interface Priority {
   value: string;
   label: string;
 }
+
+export interface FetchEventsResult {
+  events: Event[];
+  total: number;
+}
