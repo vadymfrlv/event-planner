@@ -30,6 +30,7 @@ export const EventListItemStyled = styled.li`
   position: relative;
   border-radius: 12px;
   box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
+  background-color: ${p => p.theme.colors.white};
   height: 480px;
   overflow: hidden;
   cursor: pointer;
