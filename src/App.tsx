@@ -1,7 +1,7 @@
 import { lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
-import { Layout } from 'layouts/Layout';
+import { Layout } from 'components/Layout/Layout';
 
 const HomePage = lazy(() => import('pages/HomePage'));
 const EventCreatePage = lazy(() => import('pages/EventCreatePage'));
