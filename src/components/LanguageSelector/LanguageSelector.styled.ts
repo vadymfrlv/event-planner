@@ -36,7 +36,7 @@ export const LanguageSelectorButton = styled.button`
 
   background-color: ${p => p.theme.colors.white};
   border-radius: ${p => p.theme.radii.eight};
-  box-shadow: ${p => p.theme.shadows.elements};
+  box-shadow: 2px 4px 9px 0px rgba(166, 141, 174, 0.28);
   cursor: pointer;
 `;
 
