@@ -13,7 +13,7 @@ export const PagePanel = () => {
         <Sorter />
         <ActionBtn description="Add new event" isLink to="create-event" />
       </PagePanelBtnsWrapper>
-      <PageTitle title="My events" />
+      <PageTitle title="My events" isForHomePage />
     </PagePanelWrapper>
   );
 };

@@ -1,10 +1,11 @@
 import { BackButton } from 'components/BackButton/BackButton';
+import { PageTitle } from 'components/PageTitle/PageTitle';
 
 const EventEditPage = () => {
   return (
     <>
       <BackButton />
-      <div>EventEditPage</div>
+      <PageTitle title="Edit event" />
     </>
   );
 };
