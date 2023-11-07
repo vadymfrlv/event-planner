@@ -1,25 +1,15 @@
 import styled from 'styled-components';
 
-import mainBackground from 'assets/images/svg/mainBackground.svg';
-
 export const MainStyled = styled.main`
-  /* min-height: 100vh; */
   padding-top: 40px;
   padding-bottom: 42px;
-  /* background-image: url(${mainBackground});
-  background-repeat: no-repeat;
-  background-position: top -5px left 45%;
-  background-size: auto 105%; */
 
   @media (min-width: ${p => p.theme.screens.tab}) {
     padding-bottom: 125px;
-    /* background-position: top -5px left 40%; */
   }
 
-  @media (min-width: ${p => p.theme.screens.desk}) {
+  @media (min-width: ${p => p.theme.screens.note}) {
     padding-top: 60px;
     padding-bottom: 77px;
-    /* background-size: 130% auto;
-    background-position: top -5px left 97%; */
   }
 `;
