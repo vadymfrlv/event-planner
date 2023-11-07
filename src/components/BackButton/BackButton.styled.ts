@@ -4,6 +4,8 @@ import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 
 export const StyledBackBtn = styled(Link)`
+  position: static;
+
   display: inline-flex;
   align-items: center;
 
@@ -15,6 +17,11 @@ export const StyledBackBtn = styled(Link)`
 
   &:hover {
     color: ${p => p.theme.colors.btnHover};
+  }
+
+  @media (min-width: ${p => p.theme.screens.note}) {
+    position: absolute;
+    top: 100px;
   }
 `;
 
