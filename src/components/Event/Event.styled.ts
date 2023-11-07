@@ -27,7 +27,7 @@ export const EventWrapper = styled.div`
 
   @media (min-width: ${p => p.theme.screens.note}) {
     width: 628px;
-    margin: 17px auto 0;
+    margin: 0 auto 0;
   }
 `;
 

@@ -29,6 +29,7 @@ export const FilterSelectorBtn = styled.button<FilterProps>`
   width: ${p => (p.$filterOptions ? '177px' : '56px')};
   height: 56px;
   padding: 16px;
+  
   font-family: ${p => p.theme.fonts.main};
   font-weight: ${p => p.theme.fontWeights.medium};
   font-size: 16px;
